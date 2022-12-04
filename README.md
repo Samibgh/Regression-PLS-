@@ -27,8 +27,19 @@ library(PlsRegression)
 
 Finally, in order to have a great experience with our package, make sure that you have already installed these packages :
 ```
-library(plotly)
-library(heatmaply)
+requiredpackages <- c('plotly', 'heatmaply', 'dplyr',"base", 'PlsRegression')
+
+install_load <- function(packages){
+  for (p in packages) {
+    if (p %in% rownames(installed.packages())) {
+      library(p, character.only=TRUE)
+    } else {
+      install.packages(p)
+      library(p,character.only = TRUE)
+    }
+  }
+}
+install_load(requiredpackages)
 ```
 ## Dataset Description
 
