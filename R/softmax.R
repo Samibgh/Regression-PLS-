@@ -20,7 +20,7 @@ softmax <- function(newdata,object){
   # Yhat calculation
   nclass <- ncol(object$calc$Y)
   temp <- matrix(rep(object$calc$Intercept,each=nrow(newdata)),nrow(newdata),nclass)
-  yhat <- as.matrix(newdata)%*%object$calc$Coefficients + temp
+  yhat <- as.matrix(scale(newdata))%*%object$calc$Coefficients + temp
 
   # softmax probability
   res <- t(apply(yhat,1,exp))
